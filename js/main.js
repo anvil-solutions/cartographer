@@ -1,5 +1,6 @@
 const formElement = document.getElementById('form');
 const inputElement = document.getElementById('input');
+const loadingElement = document.getElementById('loading');
 const resultElement = document.getElementById('result');
 const errorElement = document.getElementById('error');
 
@@ -23,6 +24,9 @@ function populateList(list, items) {
 
 formElement.addEventListener('submit', e => {
   e.preventDefault();
+  loadingElement.style.display = 'block';
+  resultElement.style.display = 'none';
+  errorElement.style.display = 'none';
   const formData = new FormData(formElement);
   fetch('./check', {
     method: 'POST',
@@ -30,7 +34,7 @@ formElement.addEventListener('submit', e => {
   })
   .then(response => response.json())
   .then(result => {
-    errorElement.style.display = 'none';
+    loadingElement.style.display = 'none';
     resultElement.style.display = 'block';
     resultElement.innerHTML = '';
     if (result.length > 0) {
@@ -43,6 +47,7 @@ formElement.addEventListener('submit', e => {
     }
   })
   .catch(error => {
+    loadingElement.style.display = 'none';
     resultElement.style.display = 'none';
     errorElement.style.display = 'block';
     console.error(error);

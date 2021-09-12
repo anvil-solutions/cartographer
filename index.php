@@ -10,6 +10,9 @@
       <button type="submit" class="btn">Analyze</button>
     </form>
   </div>
+  <div id="loading" class="card" style="display:none">
+    Loading
+  </div>
   <div id="result" class="card" style="display:none"></div>
   <div id="error" class="card" style="display:none">
     <h2>Action Failed</h2>
