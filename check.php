@@ -20,7 +20,6 @@
     echo '[]';
     exit;
   }
-  while (strpos($file, '  ') !== false) $file = str_replace('  ', ' ', $file);
 
   $result = [];
   $sitemap = new SimpleXMLElement($file);
